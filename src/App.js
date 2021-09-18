@@ -7,6 +7,8 @@ import PlayArrowIcon from "@material-ui/icons/PlayArrow";
 import PauseIcon from "@material-ui/icons/Pause";
 import { PositionalAudio, Text } from "@react-three/drei";
 import { EffectComposer, Bloom, SMAA } from "@react-three/postprocessing";
+import * as THREE from "three";
+import Omniface from "./Star Jedi_Regular.json";
 
 function App() {
   const sound = useRef();
@@ -51,23 +53,34 @@ function App() {
     setPlay(!play);
   }
 
+  const font = new THREE.FontLoader().parse(Omniface);
+  const textOptions = { font, size: 0.5, height: 0.3, color: "red" };
+
   return (
     <div className="App">
-      <Canvas>
+      <Canvas camera={{ position: [0, 0, 10] }}>
         <ambientLight intensity={0.2} />
         <directionalLight position={[0, 0, 5]} />
-        <Text
-          scale={[5, 5, 5]}
+        {/* <Text
+          scale={[7, 7, 7]}
           color="white" // default
-          anchorX="center" // default
-          anchorY="center" // default
+          // anchorX="center" // default
+          // anchorY="middle" // default
+          position={[-0, 3, 0]}
         >
           Welcome to Productivity Bot
-        </Text>
+        </Text> */}
+        <mesh position={[-6, 4, 2]}>
+          <textGeometry
+            attach="geometry"
+            args={["Wellcome to Productivity Bot", textOptions]}
+          ></textGeometry>
+          <meshStandardMaterial attach="material" />
+        </mesh>
         <Suspense fallback={null}>
           <PositionalAudio
             url="./usingPhone.mp3"
-            distance={10}
+            distance={1} //return to 10
             loop={false}
             ref={sound}
           />
