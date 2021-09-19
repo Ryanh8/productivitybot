@@ -1,0 +1,7 @@
+{
+  "python.pythonPath": "/Users/kamranbadirov/opt/miniconda3/envs/productivitybot/bin/python",
+
+  "terminal.integrated.env.osx": {
+    "PATH": ""
+  }
+}
