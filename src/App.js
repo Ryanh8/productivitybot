@@ -9,6 +9,7 @@ import { PositionalAudio, Text } from "@react-three/drei";
 import { EffectComposer, Bloom, SMAA } from "@react-three/postprocessing";
 import * as THREE from "three";
 import Omniface from "./Star Jedi_Regular.json";
+import { MeshDepthMaterial } from "three";
 
 function App() {
   const sound = useRef();
@@ -80,7 +81,7 @@ function App() {
         <Suspense fallback={null}>
           <PositionalAudio
             url="./usingPhone.mp3"
-            distance={1} //return to 10
+            distance={10} //return to 10
             loop={false}
             ref={sound}
           />
